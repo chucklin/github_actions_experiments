@@ -32,3 +32,19 @@ jobs:
         git add docs
         git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
         git push origin test_branch
+
+    - name: Create PR
+      run: |
+        cat << EOF > PR_description
+        # Test auto create PR
+
+        ## Change summary
+
+        update from 1.0 -> 1.2
+        EOF
+
+        gh pr create \
+          --title "Test auto create PR" \
+          --body-file PR_description
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
