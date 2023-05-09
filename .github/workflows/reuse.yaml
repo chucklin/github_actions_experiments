@@ -1,0 +1,11 @@
+name: reuse
+on:
+  workflow_call:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: print GITHUB RUN_ID
+        run: echo "$GITHUB_RUN_ID"
