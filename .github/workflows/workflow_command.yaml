@@ -1,0 +1,21 @@
+name: Workflow commands
+
+on:
+  push:
+    branches:
+      - test_workflow_command
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo commands
+        run: |
+          echo "::notice title=Watch out::Test notice"
+          echo "::warning title=Something abnormal::Test warning"
+  test-error:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo error
+        run: |
+          echo "::error ::Test error"
